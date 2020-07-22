@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title #{title}
+    link(rel="stylesheet", href="css/flatly.min.css")
+    link(href="assets/fontawesome/css/all.css" rel="stylesheet")
+    link(href="css/app.css" rel="stylesheet")
+  body
+    header#titlebar
+      #drag-region
+        #window-title
+          span Visitor Management
+
+        #window-controls
+            .button#min-button
+                i.fas.fa-window-minimize
+            .button#max-button
+                i.far.fa-window-maximize
+            .button#restore-button
+                i.far.fa-window-restore
+            .button#close-button
+                i.fas.fa-times
+
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light(style="margin-top: 32px;")
+      .container
+        a.navbar-brand(href="#")
+          //img(src="assets/images/bootstrap-solid.svg" alt="" width="30" height="30" class="d-inline-block align-top mr-2")
+          | VMS
+        .dropdown
+          button#dropdownMenuButton.btn.btn-link.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              | {{ username }}
+          .dropdown-menu.p-3(aria-labelledby='dropdownMenuButton')
+              div.d-flex.flex-column.text-center
+                  div.mb-3
+                      img(src="https://placehold.it/100x100", alt="")
+
+                  span Tiago Goncalves
+                  span.text-muted.mb-3 tiago.goncalves.faria@gmail.com
+              a.dropdown-item(href="#") 
+                  i.fas.fa-user-circle
+                  | Account
+              a.dropdown-item(href="#") 
+                  i.fas.fa-sign-out-alt
+                  | Sign out
+
+
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+        .container
+            button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarColor01' aria-controls='navbarColor01' aria-expanded='false' aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarColor01.collapse.navbar-collapse
+                ul.navbar-nav.mr-auto
+                    li.dropdown
+                        a#dropdownMenuLink.btn.btn-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                            | EMPLOYEES
+                        .dropdown-menu(aria-labelledby='dropdownMenuLink')
+                            a.dropdown-item(href='/employee/add') New Employee
+                            a.dropdown-item(href='#') Company Employee List
+
+                    li.dropdown
+                        a#dropdownMenuLink.btn.btn-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                            | VISITORS
+                        .dropdown-menu(aria-labelledby='dropdownMenuLink')
+                            a.dropdown-item(href='#') New Visitor
+                            a.dropdown-item(href='#') All Visitors
+                            a.dropdown-item(href='#') My Visitors
+                            a.dropdown-item(href='#') Blacklisted Visitors
+
+                    li.dropdown
+                        a#dropdownMenuLink.btn.btn-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+                            | VISIT REQUESTS
+                        .dropdown-menu(aria-labelledby='dropdownMenuLink')
+                            a.dropdown-item(href='#') New Visit Request
+                            a.dropdown-item(href='#') All Visit Requests
+                            a.dropdown-item(href='#') My Pending Visit Requests
+                            a.dropdown-item(href='#') My Confirmed Visit Requests
+
+                form.form-inline.my-2.my-lg-0
+                    input.form-control.mr-sm-2(type='text' placeholder='Search')
+                    button.btn.btn-secondary.my-2.my-sm-0(type='submit') Search
+
+    .container.p-4
+        block content
+
+    block scripts
+        script(src="js/jquery-3.4.1.min.js")
+        script(src='bootstrap/js/bootstrap.min.js')
+
+        script(src="./renderer.js")

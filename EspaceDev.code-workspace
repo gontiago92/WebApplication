@@ -1,0 +1,14 @@
+{
+    "folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\Orcus"
+		},
+		{
+			"path": "..\\oop_old"
+		}
+	],
+    "settings": {}
+}

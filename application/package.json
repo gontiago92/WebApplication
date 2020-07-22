@@ -1,0 +1,23 @@
+{
+  "name": "windowsapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "build": "browserify rendererConverter.js -o public/js/renderer.js",
+    "start": "nodemon --watch *,.twig --exec electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browserify": "^16.5.0",
+    "electron": "^6.0.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.1",
+    "pug": "^2.0.4",
+    "twing": "^4.0.1"
+  },
+  "devDependencies": {
+    "electron-reload": "^1.5.0"
+  }
+}
