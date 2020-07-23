@@ -1,0 +1,8 @@
+RewriteEngine On
+
+
+RewriteCond %{REQUEST_FILENAME} !-f 
+
+#RewriteRule . /index.php?url=$1 [L]
+RewriteRule ^([a-zA-Z0-9\-\_\/]*)$ public/$1
+

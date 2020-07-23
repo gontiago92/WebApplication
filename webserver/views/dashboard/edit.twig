@@ -1,0 +1,115 @@
+{% extends "dashboard.twig" %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="../public/css/htmleditor.css">
+{% endblock %}
+
+{% block content %}
+<h1>Editar <small class="label warning">Postado : {{ article.created_at }}</small></h1>
+<form class="edit-form" method="post" onsubmit="return getContent()">
+
+    <div class="form-group">
+        <input type="text" name="title" value="{{ article.title }}">
+    </div>
+    <div class="form-group">
+        <textarea name="introduction" id="introduction" cols="30" rows="5">{{ article.introduction }}</textarea>
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+        <div class="editor">
+
+            <div class="toolbar">
+                <div class="row">
+                    <a class="toolbar-link" href="#" data-command='bold'><i class="fa fa-bold"></i></a>
+                    <a class="toolbar-link" href="#" data-command="italic"><i class="fa fa-italic"></i></a>
+                    <span class="divider"></span>
+
+                    <span href="#" class="toolbar-link has-submenu">
+                        <i class="fa fa-align-left"></i>
+                        <div class="submenu" style="width: auto">
+                            <a class="toolbar-link" href="#" data-command="justifyLeft"><i class="fa fa-align-left"></i></a>
+                            <a class="toolbar-link" href="#" data-command="justifyCenter"><i class="fa fa-align-center"></i></a>
+                            <a class="toolbar-link" href="#" data-command="justifyRight"><i class="fa fa-align-right"></i></a>
+                            <a class="toolbar-link" href="#" data-command="justifyFull"><i class="fa fa-align-justify"></i></a>  
+                        </div>
+                    </span>
+                    
+                    <span class="divider"></span>
+                    <a class="toolbar-link" href="#" data-command="createlink"><i class="fa fa-link"></i></a>
+                    <a class="toolbar-link" href="#" data-command="insertimage"><i class="fa fa-image"></i></a>
+                    <a class="toolbar-link" href="#" data-command="insertHTML"><i class="fab fa-instagram"></i></a>
+                    <span class="divider"></span>
+                    <span href="#" class="toolbar-link has-submenu">
+                        <i class="fa fa-heading"></i>
+                        <div class="submenu">
+                            <a href="#" data-command="h1"><h1>Title 1</h1></a>
+                            <a href="#" data-command="h2"><h2>Title 2</h2></a>
+                            <a href="#" data-command="h3"><h3>Title 3</h3></a>
+                            <a href="#" data-command="h4"><h4>Title 4</h4></a>
+                            <a href="#" data-command="h5"><h5>Title 5</h5></a>
+                            <a href="#" data-command="h6"><h6>Title 6</h6></a>
+                        </div>
+                    </span>
+
+                    <span href="#" class="toolbar-link has-submenu">
+                        <i class="fa fa-font"></i>
+                        <div class="submenu">
+                            <a href="#" data-command="fontname" style="font-family: 'Arial', Helvetica, sans-serif">Arial</a>
+                            <a href="#" data-command="fontname" style="font-family: 'Arial Black', Gadget, sans-serif">Arial Black</a>
+                            <a href="#" data-command="fontname" style="font-family: 'Courier New', Courier, monospace">Courier New</a>
+                            <a href="#" data-command="fontname" style="font-family: 'Impact', Charcoal, sans-serif">Impact</a>
+                            <a href="#" data-command="fontname" style="font-family: 'Lato', sans-serif">Lato</a>
+                            <a href="#" data-command="fontname" style="font-family: 'Playfair Display', sans-serif">Playfair Display</a>
+                            <a href="#" data-command="fontname" style="font-family: 'Poppins', sans-serif">Poppins</a>
+                            <a href="#" data-command="fontname" style="font-family: 'Source Sans Pro', sans-serif">Source Sans Pro</a>
+                            <a href="#" data-command="fontname" style="font-family: 'Tahoma', Geneva, sans-serif">Tahoma</a>
+                        </div>
+                    </span>
+
+                    <span href="#" class="toolbar-link has-submenu">
+                        <i class="fa fa-font"></i>
+                        <small><i class="fa fa-font"></i></small>
+                        <div class="submenu">
+                            <a href="#" data-command="fontsize" data-value="1" style="font-size: xx-small">Very small</a>
+                            <a href="#" data-command="fontsize" data-value="2" style="font-size: x-small">A bit small</a>
+                            <a href="#" data-command="fontsize" data-value="3" style="font-size: small">Normal</a>
+                            <a href="#" data-command="fontsize" data-value="4" style="font-size: medium">Medium-large</a>
+                            <a href="#" data-command="fontsize" data-value="5" style="font-size: large">Big</a>
+                            <a href="#" data-command="fontsize" data-value="6" style="font-size: x-large">Very big</a>
+                            <a href="#" data-command="fontsize" data-value="7" style="font-size: xx-large">Maximum</a>
+                        </div>
+                    </span>
+
+                    <span class="divider"></span>
+
+                    <a class="toolbar-link" href="#" data-command="undo"><i class="fa fa-undo"></i></a>
+                    <a class="toolbar-link" href="#" data-command="redo"><i class="fa fa-redo"></i></a>
+                    <a href="#" class="toolbar-link" data-command="code"><i class="fa fa-code"></i></a>
+
+                </div>
+            </div>
+
+            <div id="textbox" class="content-area" contenteditable>
+                {{ article.content|raw }}
+            </div>
+
+        </div><!-- end of html editor -->
+
+        <textarea style="display: none;" name="content" id="content" cols="30" rows="20"></textarea>
+
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn default">Atualizar <i class="fa fa-pen"></i></button>
+        <a class="btn danger" href="/article/delete/{{ article_id }}">Apagar post <i class="fa fa-trash"></i></a>
+    </div>
+
+</form>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="../public/js/htmleditor.js"></script>
+{% endblock %}

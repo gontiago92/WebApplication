@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "..\\oop_old"
+		},
+		{
+			"path": "..\\Carman"
 		}
 	],
     "settings": {}

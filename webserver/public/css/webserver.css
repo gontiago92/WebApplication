@@ -1,0 +1,20 @@
+/* Basic styling */
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {}
+
+#app {
+    margin-top: 32px;
+    overflow-y: auto;
+}
+
+@media screen and (max-width: 480px) {
+    .jumbotron h1 {
+        font-size: 2rem;
+    }
+}

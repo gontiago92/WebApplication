@@ -1,7 +1,7 @@
 'use strict'
 
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron');
+const { app, BrowserWindow } = require('electron');
 require('./server/app.js')
 
 require('electron-reload')(__dirname)
@@ -10,14 +10,14 @@ const url = require('url');
 
 let mainWindow;
 
-app.on('ready', async () => {
+app.on('ready', async() => {
 
     let mainWindow = new BrowserWindow({
         width: 1280,
-        minWidth:400,
+        minWidth: 400,
         height: 720,
         minHeight: 400,
-        frame: false,
+        frame: true,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         }
@@ -28,7 +28,7 @@ app.on('ready', async () => {
 });
 
 // Quit when all windows are closed.
-app.on('window-all-closed', function () {
+app.on('window-all-closed', function() {
     // On macOS it is common for applications and their menu bar
     // to stay active until the user quits explicitly with Cmd + Q
     if (process.platform !== 'darwin') {
@@ -36,7 +36,7 @@ app.on('window-all-closed', function () {
     }
 });
 
-app.on('activate', function () {
+app.on('activate', function() {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (mainWindow === null) {

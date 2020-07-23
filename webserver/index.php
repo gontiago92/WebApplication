@@ -13,12 +13,28 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="public/assets/fontawesome/css/all.css">
+    <link rel="stylesheet" href="public/css/application.css">
+    <link rel="stylesheet" href="public/css/webserver.css">
 </head>
 
 <body>
 
+<header id="titlebar">
+    <div id="drag-region">
+        <div id="window-title"><span>CarMan</span></div>
+        <div id="window-controls">
+            <div class="button" id="min-button"><i class="fas fa-window-minimize"></i></div>
+            <div class="button" id="max-button"><i class="far fa-window-maximize"></i></div>
+            <div class="button" id="restore-button"><i class="far fa-window-restore"></i></div>
+            <div class="button" id="close-button"><i class="fas fa-times"></i></div>
+        </div>
+    </div>
+</header>
 
-<div id="mainpage" class="container my-4">
+<div id="app">
+
+<div id="mainpage" class="container py-4">
 
     <div id="messages" class="alert" style="display: none; position: relative;"></div>
 
@@ -50,13 +66,16 @@
 
 </div><!-- end of container -->
 
+</div>
+
+
     <script src="public/js/app.js"></script>
     <script>
         Application.init()
 
         document.querySelector('#sendmail').addEventListener('submit', e => {
             Application.sendmail(e);
-        })
+        });
     </script>
   </body>
 </html>

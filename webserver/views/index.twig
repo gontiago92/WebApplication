@@ -1,0 +1,39 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+    <div id="mainpage" class="container py-4">
+
+    <div id="messages" class="alert" style="display: none; position: relative;"></div>
+
+    <div class="jumbotron">
+        <h1>Formulaire de contact</h1>
+    </div>
+
+    <form id="sendmail" action="traitement-email.php" method="POST">
+
+        <div class="form-group">
+            <label for="name">Votre nom</label>
+            <input type="text" name="name" class="form-control" id="name">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">Votre adresse email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="_replyto">
+            <small id="emailHelp" class="form-text text-muted">Message pour l'utilisateur</small>
+        </div>
+
+        <div class="form-group">
+            <label for="message">Votre adresse email</label>
+            <textarea name="message" id="message" cols="30" rows="5" style="resize:none" class="form-control"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+
+    </form>
+
+</div><!-- end of container -->
+
+{% endblock %}
+
+

@@ -1,0 +1,29 @@
+{% extends 'layout.twig' %}
+
+{% block content %}
+
+    <h1>Nos articles</h1>
+
+    <div class="row">
+        {% for article in articles %}
+
+            <div class="card">
+                <a class="card-image-link" href="article/show/{{ article.id }}"><div class="card-image"></div></a>
+                <div class="card-body">
+                    <div class="postinfo">
+                        <a href="#"><small>admin</small></a>
+                        <a href="#"><small>Category</small></a>
+                        <small>{{ article.created_at|timeago('fr') }}</small>
+                    </div>
+                    <a href="article/show/{{ article.id }}" class="card-title-link">
+                        <h2 class="card-title">{{ article.title }}</h2>
+                    </a>
+                    <p class="card-text">{{ article.introduction }}</p>
+                    <a href="article/delete/{{ article.id }}" onclick="return window.confirm(`Êtes vous sur de vouloir supprimer cet article ?!`)">Supprimer</a>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
+{% endblock %}

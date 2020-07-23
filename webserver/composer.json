@@ -1,0 +1,17 @@
+{
+    "name": "tiago/webserver",
+    "description": "",
+    "require": {
+        "twig/twig": "^3.0",
+        "symfony/var-dumper": "^5.0"
+    },
+    "authors": [{
+        "name": "Tiago Gonçalves",
+        "email": "tiago.goncalves.faria@outlook.com"
+    }],
+    "autoload": {
+        "psr-4": {
+            "App\\": "App"
+        }
+    }
+}

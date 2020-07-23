@@ -1,0 +1,45 @@
+{% extends "layout.twig" %}
+
+
+{% block content %}
+
+
+<!--<a href="/article/delete/{{ article_id }}">Supprimer article</a>-->
+
+<div class="articleContent">
+    <div class="userinfo">
+        <div>
+            <img src="" alt="avatar">
+            Username
+        </div>
+        <small>Ecrit le {{ article.created_at }}</small>
+    </div>
+{{ article.content|raw }}
+</div>
+
+
+{% if commentaires == false %}
+    <h2>Il n'y a pas encore de commentaires pour cet article ... SOYEZ LE PREMIER ! :D</h2>
+{% else %}
+    <h2>Il y a déjà {{ commentaires|length }} réactions : </h2>
+
+    {% for commentaire in commentaires %}
+        <h3>Commentaire de {{ commentaire.author }}</h3>
+        <small>Le {{ commentaire.created_at }}</small>
+        <blockquote>
+            <em>{{ commentaire.content|raw }}</em>
+        </blockquote>
+        <a href="/comment/delete/{{ commentaire.id }}" onclick="return window.confirm(`Êtes vous sûr de vouloir supprimer ce commentaire ?!`)">Supprimer</a>
+    {% endfor %}
+
+{% endif %}
+
+<form action="/comment/create" method="POST">
+    <h3>Vous voulez réagir ? N'hésitez pas les bros !</h3>
+    <input type="text" name="author" placeholder="Votre pseudo !">
+    <textarea name="content" id="" cols="30" rows="10" placeholder="Votre commentaire ..."></textarea>
+    <input type="hidden" name="article_id" value="{{ article_id }}">
+    <button>Commenter !</button>
+</form>
+
+{% endblock %}

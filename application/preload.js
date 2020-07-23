@@ -3,9 +3,27 @@ const remote = require('electron').remote;
 // When document has loaded, initialise
 document.onreadystatechange = () => {
     if (document.readyState == "complete") {
+        buildWindowControls();
         handleWindowControls();
     }
 };
+
+function buildWindowControls() {
+    let menu = document.createElement('div')
+    menu.innerHTML = `<header id="titlebar">
+    <div id="drag-region">
+        <div id="window-title"><span>Windows Application</span></div>
+        <div id="window-controls">
+            <div class="button" id="min-button"><i class="fas fa-window-minimize"></i></div>
+            <div class="button" id="max-button"><i class="far fa-window-maximize"></i></div>
+            <div class="button" id="restore-button"><i class="far fa-window-restore"></i></div>
+            <div class="button" id="close-button"><i class="fas fa-times"></i></div>
+        </div>
+    </div>
+</header>`
+
+    document.querySelector('body').appendChild(menu)
+}
 
 function handleWindowControls() {
 
